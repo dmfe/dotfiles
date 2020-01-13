@@ -100,6 +100,9 @@ set nowrap
     map <leader>> :tabn<CR>
     map <leader>< :tabp<CR>
 
+" Buffers bindings
+    map <leader>x :bd %<CR>
+
 " Nerd tree
     map <leader>n :NERDTreeToggle<CR>
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

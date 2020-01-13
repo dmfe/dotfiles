@@ -1,7 +1,5 @@
 #!/bin/sh
 
-SESSION="dev-c"
-
 while getopts "p:" opt; do
     case $opt in
         p) PRJ_DIR="${OPTARG}";;
@@ -85,10 +83,13 @@ dot_header_template="${DOT_FILES_VIM_C_DEV}/header_template.txt"
 [[ ! -f "${l_ycm_conf}" ]] && cp "${dot_ycm_conf}" "${l_ycm_conf}"
 [[ ! -f "${l_header_template}" ]] && cp "${dot_header_template}" "${l_header_template}"
 
+SESSION="dev-c"
+IDE_WND_NAME="ide"
+DEBUG_WND_NAME="debug"
 tmux_dev_c_conf="${DOT_FILES_TMUX}/.tmux_dev_c.conf"
-tmux source "${tmux_dev_c_conf}" \; new-session -d -s "${SESSION}" -n ide
+tmux source "${tmux_dev_c_conf}" \; new-session -d -s "${SESSION}" -n "${IDE_WND_NAME}"
 
-tmux splitw -v -p 7
+tmux splitw -h -p 50
 tmux selectp -t 2
 tmux send-keys "cd ${PRJ_DIR}" Enter
 tmux send-keys "source ${PRJ_INIT_FILE}" Enter
@@ -97,6 +98,14 @@ tmux send-keys "clear" Enter
 tmux selectp -t 1
 tmux send-keys "cd ${PRJ_DIR}" Enter
 tmux send-keys "source ${PRJ_INIT_FILE}" Enter
+tmux send-keys "clear" Enter
 tmux send-keys "vi -u ${l_vimrc} ${PRJ_DIR}" Enter
+
+tmux new-window -n "${DEBUG_WND_NAME}"
+tmux send-keys "cd ${PRJ_DIR}" Enter
+tmux send-keys "source ${PRJ_INIT_FILE}" Enter
+tmux send-keys "clear" Enter
+
+tmux select-window -t 1
 
 tmux attach-session -t "${SESSION}"

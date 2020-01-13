@@ -53,4 +53,16 @@ clean() {
     [[ -d "${OUT_DIR}" ]] && make clean
 }
 
+vpe() {
+    vi -u "${CFG_DIR}/.vimrc" "${PRJ_DIR}"
+}
+
+lgdb() {
+    tail -f "${PRJ_DIR}/gdb.txt"
+}
+
+srcp() {
+    source "${CFG_DIR}/.initrc"
+}
+
 # Following project specific variables should be added by tmux session start script
