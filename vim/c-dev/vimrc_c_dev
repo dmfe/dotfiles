@@ -1,0 +1,53 @@
+"          _                        ____                          __
+"   _   __(_)___ ___  __________   / __/___  _____   _____   ____/ /__ _   __
+"  | | / / / __ `__ \/ ___/ ___/  / /_/ __ \/ ___/  / ___/  / __  / _ \ | / /
+" _| |/ / / / / / / / /  / /__   / __/ /_/ / /     / /__   / /_/ /  __/ |/ /
+"(_)___/_/_/ /_/ /_/_/   \___/  /_/  \____/_/      \___/   \__,_/\___/|___/
+
+source ~/.vimrc
+
+packadd termdebug
+
+set colorcolumn=80
+
+highlight ColorColumn ctermbg=darkgray
+
+augroup project
+    autocmd!
+    autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+augroup END
+
+let &path.="src/include,/usr/include/AL,/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include,/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include/g++-v9"
+
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_confirm_extra_conf = 0
+
+let g:ycm_warning_symbol = ''
+let g:ycm_error_symbol = ''
+
+let g:ycm_global_ycm_extra_conf = "$CFG_DIR/ycm_extra_conf.py"
+
+highlight YcmWarningLine guibg=#6C6C6C
+highlight YcmErrorLine guibg=#6C6C6C
+
+" TagBar configuration
+let g:tagbar_ctags_bin = "exctags"
+map <F8> :TagbarToggle<CR>
+map <leader>[ :pop<CR>
+map <leader>t :tnext<CR>
+
+" Termdebug configuration
+let g:exec_file_name = "$OUT_DIR/$PRJ_NAME"
+map <expr> <F9> ":Termdebug<CR><C-w>t<C-w>H:aunmenu WinBar<CR><C-w>bset trace-commands on<CR>set logging on<CR>file " . expand(g:exec_file_name) . "<CR>"
+map <leader>b :Break<CR>
+
+" File header insertion
+autocmd BufNewFile *.c,*.cpp,*.h,*.hpp 0r $CFG_DIR/header.txt
+autocmd BufNewFile *.c,*.cpp,*.h,*.hpp exe "1," . 7 . "g/.*File Name:.*/s//\* File Name: " . expand('%:t')
+autocmd BufNewFile *.c,*.cpp,*.h,*.hpp exe "1," . 7 . "g/.*Creation Date:.*/s//\* Creation Date: " . strftime("%d-%m-%Y")
+autocmd BufNewFile *.c,*.cpp,*.h,*.hpp exe "1," . 7 . "g/.*Created by:.*/s//\* Created by: " . system('whoami')
+autocmd Bufwritepre,filewritepre *.c,*.cpp,*.h,*.hpp execute "normal ma"
+
+autocmd Bufwritepre,filewritepre *.c,*.cpp,*.h,*.hpp exe "1," . 7 . "g/.*Last Modified:.*/s//\* Last Modified: " . strftime("%c")
+autocmd Bufwritepost,filewritepost *.c,*.cpp,*.h,*.hpp execute "normal `a"

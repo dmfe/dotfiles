@@ -1,0 +1,114 @@
+"
+"   _   __(_)___ ___  __________
+"  | | / / / __ `__ \/ ___/ ___/
+" _| |/ / / / / / / / /  / /__
+"(_)___/_/_/ /_/ /_/_/   \___/
+
+set nocompatible
+
+let mapleader =","
+
+" ----------------------------------------
+" Automatic installation of vim-plug, if it's not available
+" ----------------------------------------
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+"-----------------------------------------
+
+"-----------------------------------------
+" Automatically install missing plugins on startup
+"-----------------------------------------
+autocmd VimEnter *
+    \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \|   PlugInstall --sync | q
+    \| endif
+"-----------------------------------------
+
+silent! if plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'jreybert/vimagit'
+Plug 'LukeSmithxyz/vimling'
+Plug 'vimwiki/vimwiki'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-commentary'
+Plug 'vifm/vifm.vim'
+Plug 'kovetskiy/sxhkd-vim'
+Plug 'kien/ctrlp.vim'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'majutsushi/tagbar'
+Plug 'preservim/nerdcommenter'
+call plug#end()
+endif
+
+let g:deoplete#enable_at_startup = 1
+
+set exrc
+set secure
+
+set bg=light
+set go=a
+set mouse=a
+set nohlsearch
+set clipboard=unnamedplus
+set tabstop=4 shiftwidth=4 expandtab
+set list
+set listchars=eol:↴,nbsp:_,tab:⇒⇒,trail:∙,extends:>,precedes:<
+set backspace=indent,eol,start
+set nowrap
+
+" Some basics:
+    filetype plugin on
+    syntax on
+    set encoding=utf-8
+    set number relativenumber
+
+" Enable autocomplete:
+    set wildmode=longest,list,full
+
+" Disable automatic commenting newline:
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Spell-check set to <leader>o, 'o' for 'orthography':
+    map <leader>o :setlocal spell! spelllang=en_us<CR>
+
+" Splits open at the bottom and right, which is non-retarded:
+    set splitbelow splitright
+
+" Shortcuts for ctrlp
+    map <C-r> :CtrlPBuffer<CR>
+
+" Shortcuts for split navigation, saving a key press:
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+
+" Check file in shellcheck:
+    map <leader>s :!clear && shellcheck %<CR>
+
+" Atomatically deletes all trailing whitespaces on save:
+    autocmd BufWritePre * %s/\s\+$//e
+
+" Some bindings for tabs
+    map <leader>f :tabnew
+    map <leader>> :tabn<CR>
+    map <leader>< :tabp<CR>
+
+" Nerd tree
+    map <leader>n :NERDTreeToggle<CR>
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Openning a new buffer in a vertical split
+    map <leader>vn :vnew<CR>
+
+" Default YCM config
+let g:ycm_global_ycm_extra_conf = '~/.dotfiles/vim/ycm_extra_conf_global.py'
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_confirm_extra_conf = 0
