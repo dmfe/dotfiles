@@ -46,6 +46,11 @@ Plug 'preservim/nerdcommenter'
 call plug#end()
 endif
 
+augroup project
+    autocmd!
+    autocmd BufRead,BufNewFile *.mrc set filetype=sh
+augroup END
+
 let g:deoplete#enable_at_startup = 1
 
 set exrc
