@@ -16,6 +16,7 @@ export DOT_FILES_VIM="${DOT_FILES}/vim"
 export DOT_FILES_VIM_C_DEV="${DOT_FILES_VIM}/c-dev"
 export DOT_FILES_SHELL="${DOT_FILES}/shell"
 export DOT_FILES_SHELL_INIT="${DOT_FILES_SHELL}/init_scripts"
+export SCRIPTS="${HOME}/scripts"
 
 if [[ -d ${DOT_FILES_SHELL_INIT} ]]; then
     for s in $(ls -a ${DOT_FILES_SHELL_INIT} | grep -v "\.$"); do
