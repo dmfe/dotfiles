@@ -1,6 +1,6 @@
 #!/bin/bash
 
-font="System San Francisco Display 12"
+font="Monospace-18"
 
 pgrep -x dmenu && exit
 

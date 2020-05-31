@@ -120,3 +120,6 @@ let g:ycm_global_ycm_extra_conf = '~/.dotfiles/vim/ycm_extra_conf_global.py'
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_confirm_extra_conf = 0
+
+" Some airlines configs
+let g:airline_powerline_fonts = 1
