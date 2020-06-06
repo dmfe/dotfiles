@@ -86,7 +86,7 @@ set nowrap
     set splitbelow splitright
 
 " Shortcuts for ctrlp
-    map <C-r> :CtrlPBuffer<CR>
+    map <leader>r :CtrlPBuffer<CR>
 
 " Shortcuts for split navigation, saving a key press:
     map <C-h> <C-w>h
