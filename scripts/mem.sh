@@ -18,8 +18,18 @@ mem_info() {
     echo "${fmt_msg}"
 }
 
+export consumption_list="$(mem_info)"
+
 case $BLOCK_BUTTON in
-    1) notify-send "Top 10 memory consumption" "$(mem_info)" -t 30000;;
+    1)
+        notify-send "Top 10 memory consumption" "$(mem_info)" -t 30000
+        ;;
+    2)
+        nohup "${TERMINAL}" -e "${EDITOR}" "$0" >/dev/null &
+        ;;
 esac
 
-free -h | awk '/^Mem:/ {print $3 "/" $2}' | sed 's/i//g'
+icon=
+val=$(free -h | awk '/^Mem:/ {print $3 "/" $2}' | sed 's/i//g'i)
+
+echo "${icon} ${val}"

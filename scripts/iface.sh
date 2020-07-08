@@ -20,5 +20,6 @@ case $1 in
 esac
 
 ipaddr=$(ip addr show enp3s0 | awk '/inet/ { print $2 ; exit }' | sed 's/\/.*//g')
-#echo $ipaddr
-printf '<span foreground="#66ff33">%s</span>' "${icon} ${ipaddr}"
+
+echo "${icon} ${ipaddr}"
+echo "#66ff33"

@@ -27,3 +27,5 @@ complete -cf sudo
 complete -cf man
 
 export EDITOR=vim
+
+. /usr/share/bash-completion/bash_completion
