@@ -13,7 +13,7 @@ icon=""
 case $BLOCK_BUTTON in
     1)
         out=$(mpc $password status | filter)
-        [[ -n ${out} ]] && nohup $TERMINAL -e ncmpcpp >/dev/null &
+        nohup "${TERMINAL}" -e ncmpcpp >/dev/null &
         ;; # left click run ncmpcpp
     3)
         out=$(mpc $password toggle | filter)
