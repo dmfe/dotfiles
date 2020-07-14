@@ -10,9 +10,12 @@ while IFS= read -r input; do
         value="${input}"
     fi
     if (( $i == 1 )); then
-        foreground="${input}"
+        short_value="${input}"
     fi
     if (( $i == 2 )); then
+        foreground="${input}"
+    fi
+    if (( $i == 3 )); then
         background="${input}"
     fi
 
@@ -53,7 +56,7 @@ else
 fi
 
 echo "${value}"
-echo ""
+echo "${short_value}"
 echo "${foreground}"
 echo "${background}"
 

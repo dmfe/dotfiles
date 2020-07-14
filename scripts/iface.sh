@@ -22,4 +22,6 @@ esac
 ipaddr=$(ip addr show enp3s0 | awk '/inet/ { print $2 ; exit }' | sed 's/\/.*//g')
 
 echo "${icon} ${ipaddr}"
+echo
 echo "#66ff33"
+echo
