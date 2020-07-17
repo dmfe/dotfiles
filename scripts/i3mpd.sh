@@ -29,5 +29,12 @@ case $BLOCK_BUTTON in
         ;;
 esac
 
+max_len=50
+len=${#out}
+
+if (( $len > $max_len )); then
+    out="${out:0:$((max_len-3))}..."
+fi
+
 [[ -n ${out} ]] && \
     printf "%s %s\n" "${icon}" "${out}"

@@ -41,10 +41,10 @@ command=echo  | ~/scripts/i3b-formatter.sh -s
 interval=once
 
 [focused-window]
-command=sleep .3; xdotool getactivewindow getwindowname | ~/scripts/i3b-formatter.sh -r
+command=~/scripts/window-title.sh | ~/scripts/i3b-formatter.sh -r
 align=center
 interval=repeat
-min_width=300
+min_width=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 [separator4]
 command=echo  | ~/scripts/i3b-formatter.sh -s
