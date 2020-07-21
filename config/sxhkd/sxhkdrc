@@ -26,5 +26,5 @@ super + shift + x
 
 super + alt + l
 	pkill -SIGUSR1 sxhkd
-ctrl + alt + k
+shift + ctrl + k
 	pkill -SIGRTMIN+5 i3blocks
