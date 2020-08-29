@@ -110,8 +110,8 @@ interval=10
 min_width=x 100%
 
 [separator3]
-full_text=<span background="#044565" foreground="#4682B4">  </span>
-markup=pango
+command=echo "    " | ~/scripts/i3b-formatter.sh -s
+interval=once
 
 [cpu_temp]
 command=~/scripts/cpu-temp.sh | ~/scripts/i3b-formatter.sh
