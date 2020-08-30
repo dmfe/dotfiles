@@ -43,9 +43,6 @@ bindsym $mod+s gaps inner current plus 5
 bindsym $mod+Shift+s gaps inner current minus 5
 bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -l 10 -fn Inconsolata-15
-
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -189,7 +186,7 @@ bar {
             focused_workspace  $bg-color          $bar-ws-focus-color $text-color
             active_workspace   $inactive-bg-color $inactive-bg-color  $inactive-text-color
             inactive_workspace $inactive-bg-color $inactive-bg-color  $inactive-text-color
-            urgent_workspace   $urgent-bg-color   $urgent-bg-color    $text-color
+            urgent_workspace   $text-color        $urgent-bg-color    $text-color
        }
 }
 
