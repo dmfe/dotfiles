@@ -25,6 +25,8 @@ super + shift + m
 	${SCRIPTS}/dmenumount.sh
 super + shift + x
 	${SCRIPTS}/screen-locker.sh
+super + shift + p
+    ${SCRIPTS}/dmenu-pass.sh
 
 super + alt + l
 	pkill -SIGUSR1 sxhkd
