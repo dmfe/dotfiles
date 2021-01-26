@@ -21,8 +21,13 @@ password=$(printf '%s\n' "${password_files[@]}" | dmenu -fn Monospace-18 -nb "${
 [[ -n $password ]] || exit
 
 if [[ $typeit -eq 0 ]]; then
-    pass show -c "${password}" 2>/dev/null && \
+    pass show -c "${password}" 2>/dev/null
+    if [[ $? -eq 0 ]]; then
         notify-send "${password} copied to clipboard"
+    else
+        notify-send "Passfrase required for using gpg secret key."
+        nohup "${TERMINAL}" -e sh -c 'pass show -c '"${password}" >/dev/null &
+    fi
 else
     pass show "${password}" | { IFS= read -r pass; printf %s "$pass"; } |
         xdotool type --clearmodifiers --file -
