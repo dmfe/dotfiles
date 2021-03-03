@@ -5,6 +5,8 @@ icon_file="$(ls $icons_dir | sort -R | head -n 1)"
 icon=$HOME/$icons_dir/$icon_file
 tmp_bg=/tmp/screen.png
 
+[[ -f "${tmp_bg}" ]] && rm -f "${tmp_bg}"
+
 #echo $icon
 
 scrot $tmp_bg
