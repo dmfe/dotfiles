@@ -1,34 +1,46 @@
 
 # Basic binds
 super + Return
-	$TERMINAL -e /bin/bash --rcfile ~/.bash_profile
+    $TERMINAL -e /bin/bash --rcfile ~/.bash_profile
 super + m
-	$TERMINAL -e ncmpcpp
+    $TERMINAL -e ncmpcpp
 super + shift + f
-	$TERMINAL -e ranger
+    $TERMINAL -e ranger
 super + shift + t
-	$TERMINAL -e htop
+    $TERMINAL -e htop
 super + c
-	"${TERMINAL}" -e calc
+    "${TERMINAL}" -e calc
 super + shift + n
-	nohup "${TERMINAL}" -e sh -c 'neofetch;read' >/dev/null &
+    nohup "${TERMINAL}" -e sh -c 'neofetch;read' >/dev/null &
 
 super + Print
-	import jpg:- | xclip -selection clipboard -t image/jpeg
+    import jpg:- | xclip -selection clipboard -t image/jpeg
 super + t
-	${SCRIPTS}/shutdown.sh
+    ${SCRIPTS}/shutdown.sh
 super + d
-	${SCRIPTS}/dmenu-run.sh
+    ${SCRIPTS}/dmenu-run.sh
 super + e
-	${SCRIPTS}/dmenu-unicode.sh
+    ${SCRIPTS}/dmenu-unicode.sh
 super + shift + m
-	${SCRIPTS}/dmenumount.sh
+    ${SCRIPTS}/dmenumount.sh
 super + shift + x
-	${SCRIPTS}/screen-locker.sh
+    ${SCRIPTS}/screen-locker.sh
 super + shift + p
     ${SCRIPTS}/dmenu-pass.sh
 
+# Sound
+super + F10
+    vc toggle
+super + F12
+    vc up
+super + F11
+    vc down
+super + shift + F12
+    vc up 20
+super + shift + F11
+    vc down 20
+
 super + alt + l
-	pkill -SIGUSR1 sxhkd
+    pkill -SIGUSR1 sxhkd
 shift + ctrl + k
-	pkill -SIGRTMIN+5 i3blocks
+    pkill -SIGRTMIN+5 i3blocks

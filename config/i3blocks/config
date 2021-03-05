@@ -60,7 +60,8 @@ command=echo  | ~/scripts/i3b-formatter.sh -s
 interval=once
 
 [volume]
-command=~/scripts/volume.sh | ~/scripts/i3b-formatter.sh -r
+command=~/scripts/sound/volume.sh | ~/scripts/i3b-formatter.sh -r
+signal=10
 interval=once
 min_width=xxx100%
 
