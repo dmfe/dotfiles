@@ -1,0 +1,15 @@
+#!/bin/sh
+
+icon=
+vpn_name=$(sudo ipsec status | awk '/ESTABLISHED/ { print $1 }' | sed 's/\[.*\]://')
+
+[[ ${vpn_name} ]] || exit
+
+case $BLOCK_BUTTON in
+    1)
+        notify-send "VPN Name: ${vpn_name}"
+        ;;
+esac
+
+printf '%s\n' "${icon}"
+

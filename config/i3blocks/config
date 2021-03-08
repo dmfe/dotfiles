@@ -136,3 +136,7 @@ command=~/scripts/keymap-switch.sh | ~/scripts/i3b-formatter.sh
 signal=5
 interval=once
 min_width=xxx us
+
+[vpn]
+command=~/scripts/vpn/vpn-status | ~/scripts/i3b-formatter.sh
+interval=15

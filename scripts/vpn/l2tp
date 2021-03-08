@@ -11,19 +11,19 @@ connect() {
     local vpn_name=$1
     echo "connecting (VPN Name: $1)..."
 
-    ipsec up ${vpn_name}
-    echo "c ${vpn_name}" > /var/run/xl2tpd/l2tp-control
+    sudo ipsec up ${vpn_name}
+    echo "c ${vpn_name}" | sudo tee /var/run/xl2tpd/l2tp-control
     sleep 5
-    route add default dev ppp0
+    sudo route add default dev ppp0
 }
 
 disconnect() {
     local vpn_name=$1
     echo "disconnecting (VPN Name: ${vpn_name})..."
 
-    route del default dev ppp0
-    echo "d ${vpn_name}" > /var/run/xl2tpd/l2tp-control
-    ipsec down ${vpn_name}
+    sudo route del default dev ppp0
+    echo "d ${vpn_name}" | sudo tee /var/run/xl2tpd/l2tp-control
+    sudo ipsec down ${vpn_name}
 }
 
 die() {
