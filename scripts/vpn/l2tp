@@ -1,0 +1,81 @@
+#!/bin/sh
+
+set -e
+
+print_help() {
+    printf 'Usage:\n'
+    printf 'l2tp --vpn_name vpn-name [--connect|--disconnect|-c|-d]\n'
+}
+
+connect() {
+    local vpn_name=$1
+    echo "connecting (VPN Name: $1)..."
+
+    ipsec up ${vpn_name}
+    echo "c ${vpn_name}" > /var/run/xl2tpd/l2tp-control
+    sleep 5
+    route add default dev ppp0
+}
+
+disconnect() {
+    local vpn_name=$1
+    echo "disconnecting (VPN Name: ${vpn_name})..."
+
+    route del default dev ppp0
+    echo "d ${vpn_name}" > /var/run/xl2tpd/l2tp-control
+    ipsec down ${vpn_name}
+}
+
+die() {
+    printf '%s\n' "$1" >&2
+    exit 1
+}
+
+while :; do
+    case $1 in
+        -c|--connect)
+            ACTION=connect
+            shift
+            ;;
+        -d|--disconnect)
+            ACTION=disconnect
+            shift
+            ;;
+        --vpn-name)
+            if [[ "$2" ]]; then
+                VPN_NAME=$2
+                shift
+                shift
+            else
+                die 'ERROR: "--vpn-name" requires a non-empty option argument.'
+            fi
+            ;;
+        --help|-h)
+            print_help
+            exit 0
+            ;;
+        --)
+            shift
+            break
+            ;;
+        -?*)
+            printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
+            shift
+            ;;
+        *)
+            break
+    esac
+done
+
+#echo "ACTION: ${ACTION}"
+#echo "VPN_NAME: ${VPN_NAME}"
+
+[[ ${VPN_NAME} ]] || \
+    die 'VPN Name is not specified. Plese use --vpn-name option.'
+
+if [[ ${ACTION} == "disconnect" ]]; then
+    disconnect ${VPN_NAME}
+else
+    connect ${VPN_NAME}
+fi
+

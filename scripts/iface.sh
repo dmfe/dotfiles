@@ -1,7 +1,7 @@
 #!/bin/bash
 
 icon=
-iface=$(ip route | awk '/^default/ { print $5 ; exit }')
+iface=$(ip route | awk '/^default via/ { print $5 ; exit }')
 
 [[ ! -d /sys/class/net/${iface} ]] && exit
 
