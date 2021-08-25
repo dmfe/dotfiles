@@ -94,9 +94,6 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# screen layout
-exec_always ~/.screenlayout/.screenlayout.sh
-
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 "
@@ -225,8 +222,6 @@ assign [class= "Steam"] $ws7
 assign [class= "Firefox"] $ws10
 assign [class= "Skype"] $ws8
 assign [class= "TelegramDesktop"] $ws9
-
-exec $scripts_dir/wallpaper.sh 20
 
 # for developing purposes...
 for_window [class="SFML works!"] floating enable border normal
