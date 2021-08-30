@@ -71,7 +71,7 @@ visualizer_in_stereo = yes
 ## that sane values start with >=10.
 ##
 #
-visualizer_sync_interval = 30
+visualizer_sync_interval = 20
 #
 ##
 ## Note: To enable spectrum frequency visualization you need to compile ncmpcpp
@@ -82,7 +82,8 @@ visualizer_sync_interval = 30
 ##
 visualizer_type = spectrum
 #
-visualizer_look = 
+visualizer_look = 
+#visualizer_look = 
 #visualizer_look = 卐
 #
 #visualizer_color = blue, cyan, green, yellow, magenta, red
@@ -364,7 +365,7 @@ media_library_albums_split_by_date = no
 #
 #generate_win32_compatible_filenames = yes
 #
-#allow_for_physical_item_deletion = no
+allow_for_physical_item_deletion = yes
 #
 ##
 ## Note: If you set this variable, ncmpcpp will try to get info from last.fm in
