@@ -1,0 +1,37 @@
+#!/bin/sh
+
+case $BUTTON in
+    2)
+        nohup "${TERMINAL}" -e "${EDITOR}" "$0" > /dev/null 2>&1 &
+        ;;
+esac
+
+full_icon=
+almost_full_icon=
+half_icon=
+almost_drained_icon=
+drained_icon=
+charging_icon=
+
+cap=$(cat /sys/class/power_supply/BAT0/capacity)
+stat=$(cat /sys/class/power_supply/BAT0/status)
+if [[ "${cap}" -gt 90 ]]; then
+  icon="${full_icon}"
+elif [[ "${cap}" -le 90 && "${cap}" -gt 50 ]]; then
+  icon="${almost_full_icon}"
+elif [[ "${cap}" -le 50 && "${cap}" -gt 20 ]]; then
+  icon="${half_icon}"
+elif [[ "${cap}" -le 20 && "${cap}" -gt 5 ]]; then
+  icon="${almost_drained_icon}"
+else
+  icon="${drained_icon}"
+fi
+
+sep_space="  "
+
+if [[ "${stat}" = "Charging" ]]; then
+    icon="${charging_icon}"
+    sep_space=" "
+fi
+
+echo "${icon}${sep_space}${cap}%"
