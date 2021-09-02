@@ -227,3 +227,4 @@ assign [class= "TelegramDesktop"] $ws9
 for_window [class="SFML works!"] floating enable border normal
 for_window [class="Minusculo"] floating enable border normal
 for_window [class="bomber"] floating enable border normal
+for_window [class="Firefox"] floating enable normal
