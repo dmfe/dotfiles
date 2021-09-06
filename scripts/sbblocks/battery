@@ -15,9 +15,9 @@ charging_icon=
 
 cap=$(cat /sys/class/power_supply/BAT0/capacity)
 stat=$(cat /sys/class/power_supply/BAT0/status)
-if [[ "${cap}" -gt 90 ]]; then
+if [[ "${cap}" -gt 80 ]]; then
   icon="${full_icon}"
-elif [[ "${cap}" -le 90 && "${cap}" -gt 50 ]]; then
+elif [[ "${cap}" -le 80 && "${cap}" -gt 50 ]]; then
   icon="${almost_full_icon}"
 elif [[ "${cap}" -le 50 && "${cap}" -gt 20 ]]; then
   icon="${half_icon}"
@@ -29,9 +29,13 @@ fi
 
 sep_space="  "
 
+icon_file="~/.local/share/icons/low-battery.png"
+
 if [[ "${stat}" = "Charging" ]]; then
     icon="${charging_icon}"
     sep_space=" "
+elif [[ "${cap}" -le 5 ]]; then
+    notify-send -u critical -i "${icon_file}" "Low Battery!" -t 10000
 fi
 
 echo "${icon}${sep_space}${cap}%"
