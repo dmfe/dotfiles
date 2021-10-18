@@ -1,24 +1,45 @@
 #!/bin/bash
 
-sink=$( pactl list short sinks | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,' | tail -n 1 )
+find_min_sink_num() {
+    nums=()
+    while IFS= read -r num; do
+        nums+=( "$num" )
+    done < <( pactl list short sinks | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,' )
+
+    min=${nums[0]}
+    for i in "${nums[@]}"; do
+        (( i < min )) && min=$i
+    done
+
+    echo $min
+}
+
+find_head() {
+    min=$1; current=$2
+    echo $(( current - min + 1 ))
+}
+
+default_sink=$(pactl get-default-sink)
+sink_num_min=$(find_min_sink_num)
+sink_num=$(pactl list short sinks | grep -i "$default_sink" | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,')
 
 case ${BUTTON} in
     2)
         nohup "${TERMINAL}" -e "${EDITOR}" "$0" >/dev/null &
         ;;
     3)
-        pactl set-sink-mute $sink toggle
+        pactl set-sink-mute $sink_num toggle
         ;;
     4)
-        pactl set-sink-volume $sink +5%
+        pactl set-sink-volume $sink_num +5%
         ;;
     5)
-        pactl set-sink-volume $sink -5%
+        pactl set-sink-volume $sink_num -5%
         ;;
 esac
 
-muted=$( awk '/muted/ {print $2}' <(pacmd list-sinks | grep '^[[:space:]]muted:' | head -n $(( $sink + 1 )) | tail -n 1 ) )
-vol=$( pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $sink + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,' )
+muted=$( awk '/muted/ {print $2}' <(pacmd list-sinks | grep '^[[:space:]]muted:' | head -n $(find_head $sink_num_min $sink_num ) | tail -n 1 ) )
+vol=$( pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(find_head $sink_num_min $sink_num) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,' )
 
 if [ "$muted" = "yes" ]; then
   icon="ﱝ"
