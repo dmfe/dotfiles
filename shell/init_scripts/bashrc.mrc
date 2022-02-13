@@ -26,6 +26,6 @@ alias llr="ls -laRh"
 complete -cf sudo
 complete -cf man
 
-export EDITOR=vim
+export EDITOR=nvim
 
 . /usr/share/bash-completion/bash_completion
