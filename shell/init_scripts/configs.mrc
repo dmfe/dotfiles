@@ -8,8 +8,8 @@
 export XDG_CONFIG_HOME=${HOME}/.config
 
 alias vi='vi -c "let g:tty='\''$(tty)'\''"'
-alias v='vi'
 alias nv='nvim'
+alias v='nv'
 alias i3c="vi ${HOME}/.config/i3/config"
 alias bsc="vi ${HOME}/.bashrc"
 alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/config"
