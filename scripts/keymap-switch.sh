@@ -6,10 +6,15 @@ i3bpid="$(cat ${i3bkeymapfile})"
 i3bpidcur="$(pidof i3blocks)"
 
 if [[ ${i3bpid} == ${i3bpidcur} ]]; then
-    xkb-switch -n
+    cur_layout="$(setxkbmap -query | grep layout | awk '{print $2}')"
+    if [[ $cur_layout == "us" ]]; then
+        setxkbmap ru
+    else
+        setxkbmap us
+    fi
 else
     echo "${i3bpidcur}" > "${i3bkeymapfile}"
 fi
 
-out="$(xkb-switch)"
+out="$(setxkbmap -query | grep layout | awk '{print $2}')"
 printf "%s %s\n" "${icon}" "${out}"

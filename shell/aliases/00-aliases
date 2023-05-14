@@ -1,0 +1,21 @@
+# files 
+alias lla="ls -la"
+alias ll="ls -l"
+alias llr="ls -laRh"
+
+# packet manager
+alias p="pacman"
+alias sp="sudo pacman"
+
+# programs
+alias v='nvim'
+alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/config"
+
+# system management
+alias shutdown="sudo shutdown"
+alias shtd="shutdown -h now"
+alias reboot="sudo reboot"
+
+# arango db
+alias arangor="sudo /etc/init.d/arangodb start"
+alias arangos="sudo /etc/init.d/arangodb stop"

@@ -19,7 +19,7 @@ case $1 in
     af=inet6? ;;
 esac
 
-ipaddr=$(ip addr show enp3s0 | awk '/inet/ { print $2 ; exit }' | sed 's/\/.*//g')
+ipaddr=$(ip addr show enp4s0 | awk '/inet/ { print $2 ; exit }' | sed 's/\/.*//g')
 
 echo "${icon} ${ipaddr}"
 echo

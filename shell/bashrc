@@ -1,0 +1,35 @@
+#      __               __
+#     / /_  ____ ______/ /_  __________
+#    / __ \/ __ `/ ___/ __ \/ ___/ ___/
+# _ / /_/ / /_/ (__  ) / / / /  / /__
+#(_)_.___/\__,_/____/_/ /_/_/   \___/
+
+if [[ $- != *i* ]] ; then
+    # Shell is non-interactive. Be done now!
+    return
+fi
+
+# Aliases
+ALIASES_CONFIGS=${DOT_FILES_SHELL}/aliases
+if [[ -d ${ALIASES_CONFIGS} ]]; then
+  for f in ${ALIASES_CONFIGS}/*; do
+    [[ -f ${f} ]] && source ${f}
+  done
+  unset f
+fi
+
+# Functions
+FUNCTIONS_CONFIGS=${DOT_FILES_SHELL}/functions
+if [[ -d ${FUNCTIONS_CONFIGS} ]]; then
+  for f in ${FUNCTIONS_CONFIGS}/*; do
+    [[ -f ${f} ]] && source ${f}
+  done
+  unset f
+fi
+
+# Autocompletion
+complete -cf sudo
+complete -cf man
+
+# Environment for interactive mode
+export EDITOR=nvim

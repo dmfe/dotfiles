@@ -1,0 +1,4 @@
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_LOCAL_HOME=${HOME}/.local
+export SHARE_LOCAL=${XDG_LOCAL_HOME}/share
+export SHARE_LOCAL_PICTURES=${SHARE_LOCAL}/pictures

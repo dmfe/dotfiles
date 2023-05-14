@@ -1,0 +1,6 @@
+export DOT_FILES="${HOME}/dotfiles"
+export DOT_FILES_CONFIG="${DOT_FILES}/config"
+export DOT_FILES_SCRIPTS="${DOT_FILES}/scripts"
+export DOT_FILES_SHELL="${DOT_FILES}/shell"
+export DOT_FILES_TMUX="${DOT_FILES}/tmux"
+

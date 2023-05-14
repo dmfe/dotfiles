@@ -1,0 +1,4 @@
+LOCAL_BIN=${HOME}/.local/bin
+if [[ -d ${LOCAL_BIN} ]]; then
+    export PATH=${LOCAL_BIN}:${PATH}
+fi
