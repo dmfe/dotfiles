@@ -14,3 +14,12 @@ function cdd() {
     fi
 }
 
+function passc() {
+  local choice=$(find $HOME/.password-store -type f -name '*.gpg' -printf '%P\n' | sed 's/\.gpg//' | fzf)
+  [[ -n "$choice" ]] && pass $choice | xclip
+}
+
+function passf() {
+  pass find $1
+}
+
