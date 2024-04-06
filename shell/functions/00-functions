@@ -16,7 +16,7 @@ function cdd() {
 
 function passc() {
   local choice=$(find $HOME/.password-store -type f -name '*.gpg' -printf '%P\n' | sed 's/\.gpg//' | fzf)
-  [[ -n "$choice" ]] && pass $choice | xclip
+  [[ -n "$choice" ]] && pass $choice | xclip -i -sel p -f | xclip -i -sel c
 }
 
 function passf() {
