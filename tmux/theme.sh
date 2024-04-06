@@ -17,19 +17,19 @@ base0D='#6a9fb5' # - Functions, Methods, Attribute IDs, Headings
 base0E='#3781fa' # - Keywords, Storage, Selector, Markup Italic, Diff Changed
 base0F='#8f5536' # - Deprecated, Opening/Closing Embedded Language Tags, e.g. <? php ?>
 
-set -g status-left-length 32
-set -g status-right-length 150
-set -g status-interval 5
+# set -g status-left-length 32
+# set -g status-right-length 150
+# set -g status-interval 5
 
 # default statusbar colors
-set-option -g status-style fg=$base03,bg=$base00
-
-set-window-option -g window-status-style fg=$base03,bg=$base00
-set-window-option -g window-status-format " [#I] #W "
+# set-option -g status-style fg=$base03,bg=$base00
+#
+# set-window-option -g window-status-style fg=$base03,bg=$base00
+# set-window-option -g window-status-format " [#I] #W "
 
 # active window title colors
-set-window-option -g window-status-current-style fg=$base06,bg=$base0C
-set-window-option -g window-status-current-format " #[bold][#I] #W "
+# set-window-option -g window-status-current-style fg=$base06,bg=$base0C
+# set-window-option -g window-status-current-format " #[bold][#I] #W "
 
 # pane border colors
 set-window-option -g pane-active-border-style fg=$base00
@@ -42,14 +42,14 @@ set-window-option -g mode-style fg=$base06,bg=$base0C
 set-option -g message-style bg=$base00,fg=$base06
 
 # pane number display
-set-option -g display-panes-active-colour $base0C
-set-option -g display-panes-colour $base03
+# set-option -g display-panes-active-colour $base0C
+# set-option -g display-panes-colour $base03
 
 # clock
-set-window-option -g clock-mode-colour $base0C
-
-set-option -g status-right ''
-
-tm_session_name="#[default,bg=$base00,fg=$base06] #S "
-set -g status-left "$tm_session_name"
+# set-window-option -g clock-mode-colour $base0C
+#
+# set-option -g status-right ''
+#
+# tm_session_name="#[default,bg=$base00,fg=$base06] #S "
+# set -g status-left "$tm_session_name"
 

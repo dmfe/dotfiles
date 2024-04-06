@@ -1,8 +1,8 @@
 #!/bin/bash
 
 font="Monospace-18"
-panel_background=$(xrdb -query | grep '*.panel_background' | awk '{print $NF}')
-selected_background=$(xrdb -query | grep '*.ws_focused' | awk '{print $NF}')
+panel_background=$(xrdb -query | grep '*.normbgcolor' | awk '{print $NF}')
+selected_background=$(xrdb -query | grep '*.selbgcolor' | awk '{print $NF}')
 
 pgrep -x dmenu && exit
 

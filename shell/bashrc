@@ -31,5 +31,17 @@ fi
 complete -cf sudo
 complete -cf man
 
+# Enable vi mode
+set -o vi
+
 # Environment for interactive mode
 export EDITOR=nvim
+
+eval "$(dircolors)"
+
+# Powerline configuration
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/share/powerline/bindings/bash/powerline.sh
+

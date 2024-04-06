@@ -1,7 +1,8 @@
 # files 
-alias lla="ls -la"
-alias ll="ls -l"
-alias llr="ls -laRh"
+alias ls="ls $LS_OPTIONS"
+alias ll="ls $LS_OPTIONS -l"
+alias l="ls $LS_OPTIONS -la"
+alias lr="ls $LS_OPTIONS -laRh"
 
 # packet manager
 alias p="pacman"
@@ -15,6 +16,9 @@ alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/config"
 alias shutdown="sudo shutdown"
 alias shtd="shutdown -h now"
 alias reboot="sudo reboot"
+
+# rsync
+alias rsync="rsync -vrP --delete-after"
 
 # arango db
 alias arangor="sudo /etc/init.d/arangodb start"

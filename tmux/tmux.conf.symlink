@@ -44,7 +44,7 @@ set-option -g set-titles-string "#T - #W"
 ######################
 
 # reload config file
-bind r source-file ~/.dotfiles/tmux/tmux.conf.symlink \; display '~/.dotfiles/tmux/tmux.conf.symlink'
+bind r source-file ~/dotfiles/tmux/tmux.conf.symlink \; display '~/dotfiles/tmux/tmux.conf.symlink'
 
 # split window and fix path for tmux 1.9
 bind | split-window -h -c "#{pane_current_path}"
@@ -84,4 +84,6 @@ bind-key b select-pane -t 2 \; send-keys Up C-m \; last-pane
 #### Color $ Style Settings####
 ###############################
 
-source ~/.dotfiles/tmux/theme.sh
+source ~/dotfiles/tmux/theme.sh
+run-shell "powerline-config tmux setup"
+
