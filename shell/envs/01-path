@@ -1,4 +1,5 @@
 LOCAL_BIN=${HOME}/.local/bin
+GO_BIN=/usr/local/go/bin
 if [[ -d ${LOCAL_BIN} ]]; then
-    export PATH=${LOCAL_BIN}:${PATH}
+    export PATH=${GO_BIN}:${LOCAL_BIN}:${PATH}
 fi

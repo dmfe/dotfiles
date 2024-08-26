@@ -16,10 +16,15 @@ alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/config"
 alias shutdown="sudo shutdown"
 alias shtd="shutdown -h now"
 alias reboot="sudo reboot"
+alias s="systemctl"
 
 # rsync
-alias rsync="rsync -vrP --delete-after"
+alias rsync="rsync -uvrP --delete-after"
 
 # arango db
 alias arangor="sudo /etc/init.d/arangodb start"
 alias arangos="sudo /etc/init.d/arangodb stop"
+
+# docker
+alias d="docker"
+alias dc="docker-compose"

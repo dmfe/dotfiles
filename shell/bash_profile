@@ -19,6 +19,17 @@ fi
 # Local .bashrc
 source ${HOME}/.bashrc
 
+# Set dircolors
+[ -e ${HOME}/.dircolors ] && eval $(dircolors -b ${HOME}/.dircolors) ||
+  eval $(dircolors -b)
+
 # Start X
 [[ ! ${DISPLAY} && $(tty) = /dev/tty1 ]] && exec startx
+
+
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[ -f /home/dima/.config/.dart-cli-completion/bash-config.bash ] && . /home/dima/.config/.dart-cli-completion/bash-config.bash || true
+## [/Completion]
 
