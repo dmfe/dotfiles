@@ -28,3 +28,7 @@ alias arangos="sudo /etc/init.d/arangodb stop"
 # docker
 alias d="docker"
 alias dc="docker-compose"
+
+# pass
+alias passdmfe="PASSWORD_STORE_DIR=~/.password-store pass"
+alias passivfe="PASSWORD_STORE_DIR=~/pwd-stores/vania-password-store pass"

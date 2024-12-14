@@ -23,3 +23,12 @@ function passf() {
   pass find $1
 }
 
+function pass_dmfe() {
+  local choice=$(find $HOME/.password-store -type f -name '*.gpg' -printf '%P\n' | sed 's/\.gpg//' | fzf)
+  [[ -n "$choice" ]] && passdmfe $choice | xclip -i -sel p -f | xclip -i -sel c
+}
+
+function pass_ivfe() {
+  local choice=$(find $HOME/pwd-stores/vania-password-store -type f -name '*.gpg' -printf '%P\n' | sed 's/\.gpg//' | fzf)
+  [[ -n "$choice" ]] && passivfe $choice | xclip -i -sel p -f | xclip -i -sel c
+}

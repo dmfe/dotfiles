@@ -1,0 +1,11 @@
+source /usr/share/bash-completion/completions/pass
+
+_passdmfe(){
+    PASSWORD_STORE_DIR=~/.password-store/ _pass
+}
+complete -o filenames -o nospace -F _passdmfe passdmfe
+
+_passivfe(){
+    PASSWORD_STORE_DIR=~/pwd-stores/vania-password-store/ _pass
+}
+complete -o filenames -o nospace -F _passivfe passivfe
